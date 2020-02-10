@@ -52,7 +52,7 @@ function equalHandler(){
       result = "Error";
     }
     $("#output").text(formula + " = " +result);
-    input.innerHTML="";
+    input.innerHTML=result;
   }
 }
 
