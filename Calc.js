@@ -40,7 +40,7 @@ function equalHandler(){
   return function(){
     let formula = input.innerHTML;
     //replacing the string ans with the actual previous result
-    formula = formula.replace(/ANS/g, previousResult);
+    formula = formula.replace(/ANS/g, "("+previousResult+")");
     if(formula.charAt(0)==='+' || formula.charAt(0)==='-' || formula.charAt(0)==='*' || formula.charAt(0)==='/'){
       if(previousResult !== undefined){
         formula = previousResult + formula;
