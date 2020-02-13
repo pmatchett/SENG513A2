@@ -17,6 +17,7 @@ $(document).ready(function(){
   $("#add").click(addToOut.bind(this, '+'));
   $("#sub").click(addToOut.bind(this, '-'));
   $("#divide").click(addToOut.bind(this, '/'));
+  $("#ans").click(addToOut.bind(this, 'ANS'));
   //assgning the event handler for the = button
   $("#equal").click(equalHandler());
   //assigning the event handler for the clear button
@@ -38,6 +39,8 @@ function equalHandler(){
   let previousResult;
   return function(){
     let formula = input.innerHTML;
+    //replacing the string ans with the actual previous result
+    formula = formula.replace(/ANS/g, previousResult);
     if(formula.charAt(0)==='+' || formula.charAt(0)==='-' || formula.charAt(0)==='*' || formula.charAt(0)==='/'){
       if(previousResult !== undefined){
         formula = previousResult + formula;
@@ -52,7 +55,7 @@ function equalHandler(){
       result = "Error";
     }
     $("#output").text(formula + " = " +result);
-    input.innerHTML=result;
+    input.innerHTML="";
   }
 }
 
